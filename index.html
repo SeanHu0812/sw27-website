@@ -597,8 +597,75 @@
     .social-icon svg { width: 14px; height: 14px; }
 
 
+    /* ═══ TESTIMONIALS ═══ */
+    #testimonials {
+      padding: 72px 48px 80px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    .tmn-header { margin-bottom: 44px; }
+    .tmn-header .section-hl { margin-bottom: 10px; }
+    .tmn-desc {
+      font-size: 14px; font-weight: 300;
+      color: var(--muted); max-width: 420px; line-height: 1.65;
+    }
+    .tmn-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+    }
+    .tmn-hidden { display: none; }
+
+    .tmn-card {
+      background: var(--card); border: 1px solid var(--border);
+      padding: 24px; position: relative;
+      transition: border-color 0.25s, background 0.2s;
+    }
+    .tmn-card:hover { border-color: rgba(200,255,0,0.25); background: #1a1a1a; }
+
+    .tmn-top {
+      display: flex; align-items: center;
+      gap: 12px; margin-bottom: 16px;
+    }
+    .tmn-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      object-fit: cover; flex-shrink: 0;
+      border: 1px solid var(--border); filter: saturate(0.6);
+    }
+    .tmn-meta { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+    .tmn-name { font-size: 14px; font-weight: 600; color: var(--white); }
+    .tmn-handle { font-size: 12px; font-weight: 300; color: var(--gray); }
+
+    .tmn-x {
+      width: 13px; height: 13px;
+      color: var(--gray-lt); flex-shrink: 0;
+      transition: color 0.2s;
+    }
+    .tmn-card:hover .tmn-x { color: var(--gray); }
+
+    .tmn-text {
+      font-size: 14px; font-weight: 300;
+      color: rgba(255,255,255,0.65); line-height: 1.65;
+    }
+
+    .tmn-fade {
+      position: absolute; bottom: 80px; left: 0; right: 0;
+      height: 120px;
+      background: linear-gradient(to top, var(--dark) 0%, transparent 100%);
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .tmn-fade.hidden { opacity: 0; pointer-events: none; }
+
+    .tmn-load-wrap {
+      display: flex; justify-content: center;
+      margin-top: 32px;
+    }
+    .tmn-load-wrap.hidden { display: none; }
+
     /* ═══ RESPONSIVE ═══ */
     @media(max-width:1024px) {
+      .tmn-grid { grid-template-columns: repeat(2,1fr); }
       .speakers-grid { grid-template-columns: repeat(2,1fr); }
       #schedule { grid-template-columns: 1fr; gap: 40px; }
       #mission { grid-template-columns: 1fr; gap: 40px; }
@@ -617,7 +684,8 @@
       .stat-item { padding: 16px 0; border-right: none; border-bottom: 1px solid var(--border); }
       .stat-item:nth-child(odd) { padding-right: 20px; border-right: 1px solid var(--border); }
       .stat-item:last-child, .stat-item:nth-last-child(1) { border-bottom: none; }
-      #mission, #speakers, #schedule, #cta { padding-left: 24px; padding-right: 24px; }
+      #mission, #speakers, #schedule, #testimonials, #cta { padding-left: 24px; padding-right: 24px; }
+      .tmn-grid { grid-template-columns: 1fr 1fr; }
       #mission { padding-top: 56px; padding-bottom: 56px; }
       #speakers { padding-top: 56px; padding-bottom: 64px; }
       .speakers-grid { grid-template-columns: 1fr 1fr; gap: 1px; }
@@ -627,6 +695,7 @@
       .footer-bottom { padding: 16px 24px; flex-direction: column; align-items: flex-start; }
     }
     @media(max-width:480px) {
+      .tmn-grid { grid-template-columns: 1fr; }
       .speakers-grid { grid-template-columns: 1fr; }
       .section-header { flex-direction: column; align-items: flex-start; gap: 12px; }
       .cta-btns { flex-direction: column; align-items: stretch; }
@@ -884,6 +953,139 @@
     </div>
   </section>
 
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="tmn-header reveal">
+      <div class="section-label">Testimonials</div>
+      <h2 class="section-hl">What people are saying</h2>
+      <p class="tmn-desc">Voices from founders, investors, and builders who've been part of NYC Startup Week.</p>
+    </div>
+
+    <div class="tmn-grid" id="tmnGrid">
+
+      <div class="tmn-card reveal">
+        <div class="tmn-top">
+          <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=100&auto=format&fit=crop" alt="Alice Johnson" class="tmn-avatar" />
+          <div class="tmn-meta">
+            <span class="tmn-name">Alice Johnson</span>
+            <span class="tmn-handle">@alicejohnson</span>
+          </div>
+          <svg class="tmn-x" viewBox="0 0 1200 1227" fill="currentColor"><path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"/></svg>
+        </div>
+        <p class="tmn-text">"I'm blown away by the energy and quality of connections at NYC Startup Week. Met my co-founder on day one."</p>
+      </div>
+
+      <div class="tmn-card reveal d1">
+        <div class="tmn-top">
+          <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=100&auto=format&fit=crop" alt="David Smith" class="tmn-avatar" />
+          <div class="tmn-meta">
+            <span class="tmn-name">David Smith</span>
+            <span class="tmn-handle">@davidsmith</span>
+          </div>
+          <svg class="tmn-x" viewBox="0 0 1200 1227" fill="currentColor"><path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"/></svg>
+        </div>
+        <p class="tmn-text">"The panels were world-class. Speakers didn't hold back — real talk about what it takes to build in NYC."</p>
+      </div>
+
+      <div class="tmn-card reveal d2">
+        <div class="tmn-top">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=100&auto=format&fit=crop" alt="Emma Brown" class="tmn-avatar" />
+          <div class="tmn-meta">
+            <span class="tmn-name">Emma Brown</span>
+            <span class="tmn-handle">@emmabrown</span>
+          </div>
+          <svg class="tmn-x" viewBox="0 0 1200 1227" fill="currentColor"><path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"/></svg>
+        </div>
+        <p class="tmn-text">"Three years running, this event gets better every year. The borough-by-borough format is genius — truly feels like all of NYC showing up."</p>
+      </div>
+
+      <div class="tmn-card reveal d1">
+        <div class="tmn-top">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&auto=format&fit=crop" alt="James Wilson" class="tmn-avatar" />
+          <div class="tmn-meta">
+            <span class="tmn-name">James Wilson</span>
+            <span class="tmn-handle">@jameswilson</span>
+          </div>
+          <svg class="tmn-x" viewBox="0 0 1200 1227" fill="currentColor"><path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"/></svg>
+        </div>
+        <p class="tmn-text">"Closed a seed round within 6 weeks of Demo Day. The investor network here is unmatched."</p>
+      </div>
+
+      <div class="tmn-card reveal d2">
+        <div class="tmn-top">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=100&auto=format&fit=crop" alt="Sophia Lee" class="tmn-avatar" />
+          <div class="tmn-meta">
+            <span class="tmn-name">Sophia Lee</span>
+            <span class="tmn-handle">@sophialee</span>
+          </div>
+          <svg class="tmn-x" viewBox="0 0 1200 1227" fill="currentColor"><path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"/></svg>
+        </div>
+        <p class="tmn-text">"As a first-time founder, Startup Week gave me the confidence and community I didn't know I needed. Absolutely transformative."</p>
+      </div>
+
+      <div class="tmn-card reveal d3">
+        <div class="tmn-top">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=100&auto=format&fit=crop" alt="Michael Davis" class="tmn-avatar" />
+          <div class="tmn-meta">
+            <span class="tmn-name">Michael Davis</span>
+            <span class="tmn-handle">@michaeldavis</span>
+          </div>
+          <svg class="tmn-x" viewBox="0 0 1200 1227" fill="currentColor"><path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"/></svg>
+        </div>
+        <p class="tmn-text">"Five boroughs, five completely different vibes — each day felt like a new city unlocking. Can't wait for 2027."</p>
+      </div>
+
+      <!-- Hidden cards (shown after Load More) -->
+      <div class="tmn-card tmn-hidden reveal">
+        <div class="tmn-top">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100&auto=format&fit=crop" alt="Emily Chen" class="tmn-avatar" />
+          <div class="tmn-meta">
+            <span class="tmn-name">Emily Chen</span>
+            <span class="tmn-handle">@emilychen</span>
+          </div>
+          <svg class="tmn-x" viewBox="0 0 1200 1227" fill="currentColor"><path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"/></svg>
+        </div>
+        <p class="tmn-text">"The workshop on go-to-market strategy alone was worth the price of admission. Walked out with a completely new playbook."</p>
+      </div>
+
+      <div class="tmn-card tmn-hidden reveal">
+        <div class="tmn-top">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=100&auto=format&fit=crop" alt="Robert Lee" class="tmn-avatar" />
+          <div class="tmn-meta">
+            <span class="tmn-name">Robert Lee</span>
+            <span class="tmn-handle">@robertlee</span>
+          </div>
+          <svg class="tmn-x" viewBox="0 0 1200 1227" fill="currentColor"><path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"/></svg>
+        </div>
+        <p class="tmn-text">"Hired two incredible engineers and a designer through connections made at the Founders Day event. NYC talent is real."</p>
+      </div>
+
+      <div class="tmn-card tmn-hidden reveal">
+        <div class="tmn-top">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=100&auto=format&fit=crop" alt="Sarah Taylor" class="tmn-avatar" />
+          <div class="tmn-meta">
+            <span class="tmn-name">Sarah Taylor</span>
+            <span class="tmn-handle">@sarahtaylor</span>
+          </div>
+          <svg class="tmn-x" viewBox="0 0 1200 1227" fill="currentColor"><path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"/></svg>
+        </div>
+        <p class="tmn-text">"Community Day in the Bronx hit different. Reminded me why I started building in the first place — for people, not just profit."</p>
+      </div>
+
+    </div>
+
+    <!-- Gradient fade + Load More -->
+    <div class="tmn-fade" id="tmnFade"></div>
+    <div class="tmn-load-wrap" id="tmnLoadWrap">
+      <button class="btn-outline" id="tmnLoadMore">
+        Load More
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M7 2.5v9M2.5 7l4.5 4.5L11.5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section id="cta">
     <div class="cta-eyebrow reveal">Limited Spots Available</div>
@@ -1003,6 +1205,25 @@
       document.querySelectorAll('.day-row').forEach(x => x.classList.remove('active'));
       r.classList.add('active');
     }));
+
+    // Testimonials — Load More
+    const tmnLoadMore = document.getElementById('tmnLoadMore');
+    const tmnFade     = document.getElementById('tmnFade');
+    const tmnLoadWrap = document.getElementById('tmnLoadWrap');
+    if (tmnLoadMore) {
+      tmnLoadMore.addEventListener('click', () => {
+        document.querySelectorAll('.tmn-hidden').forEach(el => {
+          el.style.display = 'block';
+          // Trigger reveal animation
+          requestAnimationFrame(() => {
+            el.classList.add('will-animate');
+            requestAnimationFrame(() => el.classList.add('visible'));
+          });
+        });
+        tmnFade.classList.add('hidden');
+        tmnLoadWrap.classList.add('hidden');
+      });
+    }
 
     // Text scramble effect (ported from framer-motion component)
     function scrambleText(el, finalText, duration = 1.4, speed = 0.035) {
