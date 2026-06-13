@@ -663,6 +663,55 @@
     }
     .tmn-load-wrap.hidden { display: none; }
 
+    /* ═══ NEWSLETTER ═══ */
+    .newsletter { margin-top: 28px; max-width: 440px; }
+
+    .newsletter-label {
+      font-size: 12px; font-weight: 300;
+      color: var(--muted); margin-bottom: 10px; line-height: 1.5;
+    }
+
+    .newsletter-form { display: flex; gap: 0; }
+
+    .newsletter-input {
+      flex: 1;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-right: none;
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px; font-weight: 300;
+      padding: 11px 16px;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      min-width: 0;
+    }
+    .newsletter-input::placeholder { color: rgba(255,255,255,0.3); }
+    .newsletter-input:focus {
+      border-color: rgba(200,255,0,0.5);
+      background: rgba(255,255,255,0.07);
+    }
+    .newsletter-input.error { border-color: rgba(255,80,80,0.6); }
+
+    .newsletter-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--dark); background: var(--lime);
+      border: none; padding: 11px 20px;
+      cursor: pointer; flex-shrink: 0;
+      transition: background 0.2s;
+    }
+    .newsletter-btn:hover { background: #d8ff33; }
+
+    .newsletter-success {
+      display: none;
+      font-size: 12px; font-weight: 400;
+      color: var(--lime); margin-top: 10px;
+      letter-spacing: 0.02em;
+    }
+    .newsletter-success.visible { display: block; }
+
     /* ═══ RESPONSIVE ═══ */
     @media(max-width:1024px) {
       .tmn-grid { grid-template-columns: repeat(2,1fr); }
@@ -700,6 +749,9 @@
       .section-header { flex-direction: column; align-items: flex-start; gap: 12px; }
       .cta-btns { flex-direction: column; align-items: stretch; }
       .cta-btns > * { justify-content: center; }
+      .newsletter-form { flex-direction: column; }
+      .newsletter-input { border-right: 1px solid var(--border); border-bottom: none; }
+      .newsletter-btn { padding: 12px; }
     }
   </style>
 </head>
@@ -754,6 +806,21 @@
           <path d="M2.5 7h9M8 3.5l3.5 3.5L8 10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </a>
+      <div class="newsletter reveal d4">
+        <p class="newsletter-label">Enter your email to receive updates about Startup Week</p>
+        <form class="newsletter-form" id="newsletterForm" novalidate>
+          <input
+            type="email"
+            class="newsletter-input"
+            id="newsletterEmail"
+            placeholder="your@email.com"
+            autocomplete="email"
+            required
+          />
+          <button type="submit" class="newsletter-btn">Notify Me</button>
+        </form>
+        <p class="newsletter-success" id="newsletterSuccess">&#10003; You&rsquo;re on the list. We&rsquo;ll be in touch.</p>
+      </div>
     </div>
 
     <div class="hero-scroll">
@@ -1268,6 +1335,29 @@
       // re-scramble every 6 seconds
       setInterval(() => scrambleText(el, finalText), 6000);
     });
+
+    // Newsletter form
+    const newsletterForm = document.getElementById('newsletterForm');
+    const newsletterEmail = document.getElementById('newsletterEmail');
+    const newsletterSuccess = document.getElementById('newsletterSuccess');
+    if (newsletterForm) {
+      newsletterForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const val = newsletterEmail.value.trim();
+        const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+        if (!valid) {
+          newsletterEmail.classList.add('error');
+          newsletterEmail.focus();
+          return;
+        }
+        newsletterEmail.classList.remove('error');
+        newsletterForm.style.display = 'none';
+        newsletterSuccess.classList.add('visible');
+      });
+      newsletterEmail.addEventListener('input', () => {
+        newsletterEmail.classList.remove('error');
+      });
+    }
   </script>
 </body>
 </html>
